@@ -4,11 +4,11 @@ const Provincia = require("../model/Provincia");
 
 const {getCatData} = require('../services/apiCat.js');
 
-let provinciasInsertadas = 0;
-let localidadesInsertadas = 0;
-let centrosEducativosInsertados = 0;
-
 const mappingCat = async () => {
+    let provinciasInsertadas = 0;
+    let localidadesInsertadas = 0;
+    let centrosEducativosInsertados = 0;
+
     const jsonContent = await getCatData();
     for(const item of jsonContent) {
         let currentLocalidad;
@@ -115,6 +115,8 @@ const mappingCat = async () => {
     console.log(`Número de provincias insertadas: ${provinciasInsertadas}`);
     console.log(`Número de localidades insertadas: ${localidadesInsertadas}`);
     console.log(`Número de centros educativos insertados: ${centrosEducativosInsertados}`);
+
+    return [provinciasInsertadas, localidadesInsertadas, centrosEducativosInsertados];
 
 }
 

@@ -4,15 +4,11 @@ const Centro_Educativo = require("../model/Centro_Educativo");
 const Localidad = require("../model/Localidad");
 const Provincia = require("../model/Provincia");
 
-
-
-let provinciasInsertadas = 0;
-let localidadesInsertadas = 0;
-let centrosEducativosInsertados = 0;
-
-
-
 const mappingMur = async () => {
+
+    let provinciasInsertadas = 0;
+    let localidadesInsertadas = 0;
+    let centrosEducativosInsertados = 0;
     try {
         const jsonContent = await getMurData();    
         
@@ -124,6 +120,8 @@ const mappingMur = async () => {
         console.log(`Número de provincias insertadas: ${provinciasInsertadas}`);
         console.log(`Número de localidades insertadas: ${localidadesInsertadas}`);
         console.log(`Número de centros educativos insertados: ${centrosEducativosInsertados}`);
+
+        return [provinciasInsertadas, localidadesInsertadas, centrosEducativosInsertados];
         
     } catch (error) {
         console.error('Error al analizar el contenido JSON:', error);
