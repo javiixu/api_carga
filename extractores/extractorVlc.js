@@ -91,7 +91,7 @@ const mappingVlc = async () => {
     }
 
     try {
-      const existingCentroEducativo = await Centro_Educativo.findOne({ nombre: item.denominaci_completa });
+      const existingCentroEducativo = await Centro_Educativo.findOne({ nombre: item.DENOMINACION });
 
       if (!existingCentroEducativo) {
         let direccion = item.TIPO_VIA + " " + item.DIRECCION + " " + item.NUMERO;
@@ -172,8 +172,14 @@ const mappingVlc = async () => {
 
     console.log("----------------------------------------------------")
   }
-  return [provinciasInsertadas, localidadesInsertadas, centrosEducativosInsertados];
+
   await driver.quit();
+
+  console.log(`Número de provincias insertadas: ${provinciasInsertadas}`);
+  console.log(`Número de localidades insertadas: ${localidadesInsertadas}`);
+  console.log(`Número de centros educativos insertados: ${centrosEducativosInsertados}`);
+
+  return [provinciasInsertadas, localidadesInsertadas, centrosEducativosInsertados];
 }
 
 module.exports = { mappingVlc };

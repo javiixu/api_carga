@@ -20,8 +20,6 @@ const carga = async (req, res) => {
     const cargas = req.body.demanda
     let resultados = {};
 
-    console.log(cargas[1])
-
     if(cargas[0] === true){
         const resultadoMur = await cargaMur()
         resultados = { ...resultados, ...resultadoMur };
@@ -88,7 +86,8 @@ const cargaMur = async () => {
 
 const cargaVlc = async() => {
     const lista = await mappingVlc()
-    const resultadosVlc = ""
+    let resultadosVlc = ""
+    console.log(lista)
 
     if(lista === undefined || (lista[0] == 0 && lista[1] == 0 && lista[2] == 0)){
         resultadosVlc = {
@@ -99,12 +98,13 @@ const cargaVlc = async() => {
     }
 
     else {
-        const resultadosVlc = {
+        resultadosVlc = {
             provinciasVlc: `Número de provincias insertadas: ${lista[0]}`,
             localidadesVlc: `Número de localidades insertadas: ${lista[1]}`,
             centrosEducativosVlc: `Número de centros educativos insertados: ${lista[2]}`
         };
     }
+    console.log(resultadosVlc)
     return resultadosVlc
 }
 
