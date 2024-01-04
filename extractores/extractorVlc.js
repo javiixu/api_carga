@@ -38,12 +38,16 @@ const mappingVlc = async () => {
     else if (item.REGIMEN == "PRIV. CONC.") tipo = "concertado";
     else if (item.REGIMEN == "OTROS") tipo = "otros";
 
+
+    let nombreProvincia = item.PROVINCIA.split("/")[0];
+    console.log("---------> El nombre de provincia viene en valenciano y castellano de origen: "+item.PROVINCIA+", nosotros los transformamos y guardamos solo el nombre en castellano: "+nombreProvincia+"\n")
+
     //Comprobamos si existe la provincia en la base de datos, y si no, se crea una
     try {
-      const existingProvincia = await Provincia.findOne({ nombre: item.PROVINCIA });
+      const existingProvincia = await Provincia.findOne({ nombre: nombreProvincia });
       if (!existingProvincia) {
         const provincia = new Provincia({
-          nombre: item.PROVINCIA,
+          nombre: nombreProvincia,
           codigo: codigoProvincia,
         });
         currentProvincia = await provincia.save();

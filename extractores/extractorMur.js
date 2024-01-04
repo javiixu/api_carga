@@ -92,7 +92,7 @@ const mappingMur = async () => {
                         nombre: item.dencen,
                         tipo: tipo,
                         direccion: item.domcen,
-                        codigo_postal: item.cpen,
+                        codigo_postal: item.cpcen,
                         longitud: geoReferencia.lon,
                         latitud: geoReferencia.lat,
                         telefono: item.telcen,
