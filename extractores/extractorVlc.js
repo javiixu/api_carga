@@ -159,7 +159,8 @@ const mappingVlc = async () => {
           telefono: item.TELEFONO,
           descripcion: item.URL_ES,
           latitud: latitud,
-          longitud: longitud
+          longitud: longitud,
+          codigoLocalidad: currentLocalidad.codigo
         });
 
         const centroInsertado = await centro_educativo.save();
