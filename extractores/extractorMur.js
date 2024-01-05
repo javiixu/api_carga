@@ -100,9 +100,14 @@ const mappingMur = async () => {
                         codigoLocalidad: currentLocalidad.codigo
                     });  
         
-                    const centroInsertado = await centro_educativo.save();                       
-                    centrosEducativosInsertados++;  
-                    console.log("Se ha insertado el centro: "+centroInsertado)
+                    if(item.cpcen) {
+                        const centroInsertado = await centro_educativo.save();                       
+                        centrosEducativosInsertados++;  
+                        //console.log("Se ha insertado el centro: "+centroInsertado)
+                    }
+                    else {
+                        console.log("No se ha insertado este centro porque no tiene codigo postal: "+centro_educativo+"\n")
+                    }
                 }
                 else {
                     console.log("No se ha insertado el centro: "+existingCentroEducativo)
